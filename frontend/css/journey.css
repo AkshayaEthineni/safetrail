@@ -1,0 +1,508 @@
+:root {
+    --primary: #2563eb;
+    --secondary: #14b8a6;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #64748b;
+    --border: #e5e7eb;
+    --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    --radius: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Inter, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 74px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    z-index: 999;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #475569;
+    font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-section img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-section span {
+    font-weight: 600;
+}
+
+.profile-section .logout-btn {
+    width: 42px;
+    height: 42px;
+    background: #eff6ff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--primary);
+    font-size: 18px;
+}
+
+.journey-page {
+    height: calc(100vh - 154px);
+    margin-top: 74px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: minmax(280px, 35%) minmax(360px, 40%) minmax(260px, 25%);
+    gap: 20px;
+}
+
+.journey-controls,
+.map-section,
+.route-analysis {
+    min-width: 0;
+}
+
+.sidebar-card,
+.map-header,
+#map,
+.route-summary-bar {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+}
+
+.sidebar-card {
+    padding: 20px;
+}
+
+.section-title h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.section-title span,
+.card-header-small span {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.form-group {
+    margin-top: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    padding: 0 14px;
+    font-size: 15px;
+}
+
+.destination-search {
+    position: relative;
+}
+
+.destination-suggestions {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    max-height: 240px;
+    overflow: auto;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.destination-suggestions.show {
+    display: block;
+}
+
+.destination-suggestion {
+    width: 100%;
+    border: none;
+    background: white;
+    color: var(--text);
+    cursor: pointer;
+    padding: 12px 14px;
+    text-align: left;
+}
+
+.destination-suggestion:hover,
+.destination-suggestion:focus {
+    background: #f8fafc;
+    outline: none;
+}
+
+.destination-suggestion strong {
+    display: block;
+    font-size: 14px;
+}
+
+.destination-suggestion span {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.preference-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.preference-group label {
+    color: #334155;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+    background: #f8fafc;
+}
+
+.primary-btn {
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    background: var(--primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.journey-controls .primary-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.map-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.map-header {
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.map-header h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.map-header p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.map-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #16a34a;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #16a34a;
+}
+
+#map {
+    flex: 1;
+    min-height: 420px;
+    overflow: hidden;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    color: var(--muted);
+}
+
+.map-placeholder i {
+    font-size: 56px;
+    color: var(--primary);
+}
+
+.analysis-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header-small {
+    margin-bottom: 14px;
+}
+
+.routes-container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 2px;
+}
+
+.empty-state {
+    border: 1px dashed var(--border);
+    border-radius: 16px;
+    color: var(--muted);
+    padding: 24px;
+    text-align: center;
+}
+
+.route-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px;
+    cursor: pointer;
+    transition: .2s;
+    background: white;
+}
+
+.route-card:hover {
+    border-color: #bfdbfe;
+}
+
+.route-card.selected {
+    border: 2px solid var(--primary);
+    background: #f8fbff;
+}
+
+.route-top,
+.route-metrics {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.route-top h4 {
+    font-size: 15px;
+}
+
+.route-label,
+.safe-badge,
+.medium-badge,
+.risk-badge {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 999px;
+}
+
+.safe-badge,
+.route-label.safe-badge {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.medium-badge,
+.route-label.medium-badge {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+.risk-badge,
+.route-label.risk-badge {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.route-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 14px;
+}
+
+.route-metrics div {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.route-metrics span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.route-description {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+    line-height: 1.4;
+}
+
+.route-summary-bar {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    height: 60px;
+    z-index: 900;
+    display: grid;
+    grid-template-columns: 1.3fr repeat(3, 1fr) 190px;
+    gap: 18px;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.route-summary-bar div span {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.route-summary-bar div strong {
+    display: block;
+    margin-top: 3px;
+    color: #0f172a;
+}
+
+.route-summary-bar .primary-btn {
+    width: 100%;
+    height: 42px;
+}
+
+.sos-floating-btn {
+    position: fixed;
+    right: 30px;
+    bottom: 96px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background: #ef4444;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(239, 68, 68, .35);
+    z-index: 999;
+}
+
+@media(max-width:1200px) {
+    body {
+        overflow: auto;
+    }
+
+    .journey-page {
+        height: auto;
+        padding-bottom: 110px;
+        grid-template-columns: 1fr;
+    }
+
+    #map {
+        min-height: 460px;
+    }
+
+    .analysis-card {
+        height: auto;
+    }
+}
+
+@media(max-width:768px) {
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .profile-section span,
+    .profile-section img {
+        display: none;
+    }
+
+    .preference-group {
+        grid-template-columns: 1fr;
+    }
+
+    .route-summary-bar {
+        height: auto;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .route-summary-bar .primary-btn {
+        grid-column: 1 / -1;
+    }
+}

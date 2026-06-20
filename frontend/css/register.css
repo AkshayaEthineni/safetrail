@@ -1,0 +1,13 @@
+.centered-page { padding: 56px 24px; background: radial-gradient(circle at top, rgba(79, 70, 229, 0.08), transparent 40%); }
+.register-card { max-width: 900px; width: 100%; }
+.register-card h1 { margin-top: 0; font-size: clamp(2.2rem, 4vw, 3rem); }
+.tourist-type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
+.type-option { display: flex; align-items: center; gap: 12px; border: 1px solid rgba(209, 213, 219, 0.7); border-radius: 18px; padding: 14px 16px; cursor: pointer; transition: var(--transition); background: #ffffff; }
+.type-option input { accent-color: var(--primary); }
+.type-option:hover { border-color: rgba(79, 70, 229, 0.45); background: #f8f9ff; }
+.type-option input:checked + span, .type-option input:focus + span { font-weight: 700; }
+.sos-phrase-card { margin-top: 28px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(79, 70, 229, 0.04)); border: 1px solid rgba(124, 58, 237, 0.18); }
+.phrase-text { font-size: 1.75rem; margin: 18px 0; font-weight: 700; }
+.phrase-note { color: var(--text-secondary); margin-bottom: 18px; }
+.auth-footer { margin-top: 18px; font-size: 14px; }
+@media (max-width: 900px) { .tourist-type-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeTrail Dashboard</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="nav-left">
+            <div class="logo">
+                <i class="fas fa-shield-heart"></i>
+                <span>SafeTrail</span>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="journey.html">Journey</a>
+            <a href="assistant.html">AI Assistant</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div class="profile-info">
+                    <h4 id="userName">Tourist</h4>
+                    <p id="userRole">Traveler</p>
+                </div>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+
+    </nav>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="dashboard-container">
+
+        <section class="dashboard-title">
+            <div>
+                <p>Travel Safety Command Center</p>
+                <h1>Tourist Dashboard</h1>
+            </div>
+            <div class="location-chip">
+                <i class="fas fa-location-crosshairs"></i>
+                <span id="currentLocationText">Hyderabad, India</span>
+            </div>
+        </section>
+
+        <section class="content-grid">
+
+            <!-- MAP -->
+
+            <div class="left-column">
+
+            <div class="map-section">
+
+                <div class="section-header">
+                    <h3>
+                        <i class="fas fa-location-dot"></i>
+                        Live Safety Map
+                    </h3>
+
+                    <span class="live-badge">
+                        LIVE
+                    </span>
+                </div>
+
+                <div id="dashboardMap"></div>
+
+            </div>
+
+            <div class="quick-actions">
+                <a class="quick-action-card" href="journey.html">
+                    <span class="action-icon blue"><i class="fas fa-route"></i></span>
+                    <strong>Start Journey</strong>
+                    <small>Analyze and begin a safe route</small>
+                </a>
+                <a class="quick-action-card" href="assistant.html">
+                    <span class="action-icon teal"><i class="fas fa-comments"></i></span>
+                    <strong>AI Assistant</strong>
+                    <small>Ask for local safety guidance</small>
+                </a>
+                <a class="quick-action-card" href="#servicesList" onclick="document.querySelector('[data-service-type=hospital]')?.click()">
+                    <span class="action-icon red"><i class="fas fa-hospital"></i></span>
+                    <strong>Find Hospitals</strong>
+                    <small>Show nearby hospitals and navigate there</small>
+                </a>
+            </div>
+
+            </div>
+
+            <!-- RIGHT SIDEBAR -->
+
+            <aside class="sidebar">
+
+                <div class="panel">
+                    <div class="panel-title">
+                        <i class="fas fa-shield-check"></i>
+                        Safety Score
+                    </div>
+                    <div class="score-panel">
+                        <strong id="safetyScore">--</strong>
+                        <span id="riskLevel">Low</span>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-title">
+                        <i class="fas fa-microphone-lines"></i>
+                        Secret SOS Phrase
+                    </div>
+                    <div class="secret-phrase-box">
+                        <strong id="dashboardSosPhrase">Loading...</strong>
+                        <span>Voice SOS listens for this phrase after you start a journey.</span>
+                    </div>
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        <i class="fas fa-route"></i>
+                        Journey Status
+                    </div>
+
+                    <div class="journey-box">
+
+                        <div class="journey-item">
+                            <span>Destination</span>
+                            <strong id="journeyRoute">
+                                No Active Journey
+                            </strong>
+                        </div>
+
+                        <div class="journey-item">
+                            <span>Route Type</span>
+                            <strong id="journeyType">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="journey-item">
+                            <span>Started</span>
+
+                            <span id="journeyStatus"
+                                  class="status-pill active">
+                                --
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        <i class="fas fa-hospital"></i>
+                        Nearby Services
+                    </div>
+
+                    <div class="service-filters">
+                        <button type="button" data-service-type="hospital">Hospitals</button>
+                        <button type="button" data-service-type="police">Police</button>
+                        <button type="button" data-service-type="safezone">Safe Zones</button>
+                    </div>
+
+                    <div id="servicesList" class="services-list">
+
+                        <!-- JS Injected -->
+
+                    </div>
+
+                </div>
+            </aside>
+
+        </section>
+
+    </main>
+
+    <!-- SOS BUTTON -->
+
+    <button id="sosButton" class="sos-button" data-sos-trigger>
+
+        <i class="fas fa-bell"></i>
+
+        <span>SOS</span>
+
+    </button>
+
+    <!-- TOAST -->
+
+    <div id="toast" class="toast">
+        SOS Alert Sent Successfully
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sos.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>

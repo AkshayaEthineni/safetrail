@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SafeTrail - AI Assistant</title>
+    <link rel="stylesheet" href="./css/assistant.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <span>SafeTrail</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="journey.html">Journey</a>
+            <a href="assistant.html" class="active">AI Assistant</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="profile-card">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <h4 id="userName">Tourist User</h4>
+                    <span id="userRole">Protected</span>
+                </div>
+            </div>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-container">
+
+        <!-- Left Panel -->
+        <aside class="left-panel">
+
+            <div class="card quick-actions-card">
+                <div class="card-header">
+                    <h3>AI Quick Actions</h3>
+                </div>
+
+                <div class="quick-actions">
+
+                    <button class="action-btn" data-action="hospital">
+                        <i class="fa-solid fa-hospital"></i>
+                        <span>Nearest Hospital</span>
+                    </button>
+
+                    <button class="action-btn" data-action="police">
+                        <i class="fa-solid fa-shield"></i>
+                        <span>Police Nearby</span>
+                    </button>
+
+                    <button class="action-btn" data-action="route">
+                        <i class="fa-solid fa-route"></i>
+                        <span>Safe Route Suggestion</span>
+                    </button>
+
+                    <button class="action-btn" data-action="women">
+                        <i class="fa-solid fa-person-dress"></i>
+                        <span>Women Safety Tips</span>
+                    </button>
+
+                    <button class="action-btn" data-action="emergency">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <span>Emergency Contacts</span>
+                    </button>
+
+                    <button class="action-btn" data-action="unsafe">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span>Unsafe Areas</span>
+                    </button>
+
+                </div>
+            </div>
+
+            <div class="card safety-card">
+                <div class="card-header">
+                    <h3>Safety Tips</h3>
+                </div>
+
+                <ul>
+                    <li>Travel in well-lit areas</li>
+                    <li>Share live location with trusted contacts</li>
+                    <li>Stay alert in crowded places</li>
+                    <li>Use SOS during emergencies</li>
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- Right Panel -->
+        <section class="chat-panel">
+
+            <div class="chat-header">
+                <div>
+                    <h2>SafeTrail AI Assistant</h2>
+                    <p>Your Safety Companion</p>
+                </div>
+
+                <div class="online-status">
+                    <span class="dot"></span>
+                    Online
+                </div>
+            </div>
+
+            <div class="chat-area" id="chatArea">
+
+                <div class="message user-message">
+                    <div class="bubble">
+                        Nearest hospital?
+                    </div>
+                </div>
+
+                <div class="message bot-message">
+                    <div class="bubble">
+                        Government Hospital is 2.3 km away and currently accessible via the safest route.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="chat-input-container">
+
+                <input
+                    type="text"
+                    id="messageInput"
+                    placeholder="Ask anything about your safety..."
+                >
+
+                <button id="voiceBtn" class="voice-btn">
+                    <i class="fa-solid fa-microphone"></i>
+                </button>
+
+                <button id="sendBtn" class="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Send
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/sos.js"></script>
+    <script src="js/assistant.js"></script>
+</body>
+</html>

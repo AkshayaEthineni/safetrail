@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics — SafeTrail</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/analytics.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell analytics-shell">
+    <aside class="sidebar">
+      <div class="brand-block"><span class="logo-icon">📊</span><span>Analytics</span></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html">🏠 User Dashboard</a>
+        <a href="emergency.html">🚨 Emergency Ops</a>
+      </nav>
+      <button id="logoutBtn" class="btn btn-outline btn-full">Logout</button>
+    </aside>
+    <main class="page-content analytics-page">
+      <header class="page-header">
+        <div>
+          <div class="page-meta">Admin Overview</div>
+          <h1>System Analytics</h1>
+        </div>
+        <button id="sosButton" class="pulse-button">SOS</button>
+      </header>
+      <section class="stats-grid analytics-stats">
+        <article class="stat-card indigo-border"><span>Total Registered Users</span><strong id="totalUsers">0</strong></article>
+        <article class="stat-card red-border"><span>Total SOS Events</span><strong id="totalSOS">0</strong></article>
+        <article class="stat-card amber-border"><span>Geo-fencing Alerts</span><strong id="geoAlerts">0</strong></article>
+        <article class="stat-card green-border"><span>Avg Response Time</span><strong id="avgResponse">0 min</strong></article>
+      </section>
+      <section class="charts-grid">
+        <div class="chart-card"><h3>Weekly SOS Events</h3><canvas id="weeklyChart"></canvas></div>
+        <div class="chart-card"><h3>User Types Distribution</h3><canvas id="userTypeChart"></canvas></div>
+        <div class="chart-card"><h3>Incident Types Breakdown</h3><canvas id="incidentTypeChart"></canvas></div>
+        <div class="chart-card"><h3>Safety Score Trends</h3><canvas id="scoreTrendChart"></canvas></div>
+      </section>
+      <section class="activity-card card">
+        <div class="panel-header"><h2>Recent Activity</h2></div>
+        <div id="activityFeed" class="activity-feed"></div>
+      </section>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/sos.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

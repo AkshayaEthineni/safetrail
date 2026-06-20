@@ -1,0 +1,13 @@
+.analytics-shell { min-height: 100vh; }
+.analytics-page { flex: 1; padding: 32px; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-bottom: 22px; }
+.stat-card { padding: 24px; border-radius: var(--radius); background: white; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
+.stat-card span { color: var(--text-secondary); }
+.stat-card strong { font-size: 28px; }
+.charts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 20px; }
+.chart-card { padding: 24px; border-radius: var(--radius); background: white; border: 1px solid var(--border); }
+.activity-card { padding: 24px; border-radius: var(--radius); background: white; border: 1px solid var(--border); }
+.activity-feed { display: grid; gap: 14px; margin-top: 18px; }
+.activity-event { padding: 18px; border-radius: 18px; border: 1px solid var(--border); background: #f8fafc; }
+.activity-event strong { display: block; margin-bottom: 6px; }
+@media (max-width: 1000px) { .stats-grid, .charts-grid { grid-template-columns: 1fr; } }

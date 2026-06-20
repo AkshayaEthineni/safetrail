@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — SafeTrail</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/register.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand"><span class="logo-icon">🛡️</span>SafeTrail</a>
+    <div class="navbar-nav"><a href="login.html" class="btn btn-outline btn-sm">Login</a></div>
+  </nav>
+  <main class="auth-page centered-page">
+    <div class="card auth-card register-card">
+      <h1>Create your account</h1>
+      <p class="text-secondary">Register to receive your secret SOS phrase and live travel protection.</p>
+      <div id="alertBox" class="alert-box" style="display:none"></div>
+      <form id="registerForm">
+        <div class="grid-2">
+          <div class="form-group"><label>Full Name</label><input type="text" id="name" class="form-control" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="email" class="form-control" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group"><label>Phone Number</label><input type="tel" id="phone" class="form-control" required></div>
+          <div class="form-group"><label>Password</label><input type="password" id="password" class="form-control" placeholder="Min 6 characters" required></div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group"><label>Emergency Contact Name</label><input type="text" id="emergencyContactName" class="form-control"></div>
+          <div class="form-group"><label>Emergency Contact Phone</label><input type="tel" id="emergencyContactPhone" class="form-control"></div>
+        </div>
+        <div class="form-group">
+          <label>Tourist Type</label>
+          <div class="tourist-type-grid">
+            <label class="type-option"><input type="radio" name="touristType" value="solo" checked><span>Solo</span></label>
+            <label class="type-option"><input type="radio" name="touristType" value="family"><span>Family</span></label>
+            <label class="type-option"><input type="radio" name="touristType" value="group"><span>Group</span></label>
+            <label class="type-option"><input type="radio" name="touristType" value="solo_woman"><span>Solo Woman</span></label>
+            <label class="type-option"><input type="radio" name="touristType" value="international"><span>International</span></label>
+          </div>
+        </div>
+        <div class="toggle-row">
+          <div>
+            <strong>Women Safety Mode</strong>
+            <p class="text-secondary">Enable extra protection for nighttime and solo travel.</p>
+          </div>
+          <label class="toggle-switch"><input type="checkbox" id="womenSafetyMode"><span class="slider"></span></label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+      </form>
+      <p class="auth-footer">Already have an account? <a href="login.html">Login instead</a></p>
+      <div id="sosPhraseCard" class="sos-phrase-card" style="display:none;">
+        <h2>Your Secret SOS Phrase</h2>
+        <p class="phrase-text" id="sosPhrase"></p>
+        <p class="phrase-note">Save this phrase now. It will not be shown again.</p>
+        <button id="phraseContinue" class="btn btn-primary btn-full">Continue to Dashboard</button>
+      </div>
+    </div>
+  </main>
+  <script src="js/auth.js"></script>
+</body>
+</html>
